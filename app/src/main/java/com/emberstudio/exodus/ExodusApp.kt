@@ -1,7 +1,5 @@
 package com.emberstudio.exodus
 
-import android.util.Log
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
@@ -12,7 +10,7 @@ import com.emberstudio.exodus.about.AboutScreen
 import com.emberstudio.exodus.home.HomeScreen
 import com.emberstudio.exodus.navigation.NavigationDirections
 import com.emberstudio.exodus.navigation.PlayerNavigation
-import com.emberstudio.exodus.player.ui.PlayerScreen
+import com.emberstudio.exodus.playercompose.ui.PlayerScreen
 
 data class NavItem(
     @DrawableRes val icon: Int,
@@ -54,7 +52,6 @@ fun ExodusApp(navController: NavHostController) {
             route = PlayerNavigation.route,
             arguments = PlayerNavigation.arguments)
         {
-//            val url = it.arguments?.getString(PlayerNavigation.VIDEO_URL, "")?.replace("*","/")
             val selection = it.arguments?.getInt(PlayerNavigation.VIDEO_SELECTION, -1)
             PlayerScreen(
                 navController = navController,

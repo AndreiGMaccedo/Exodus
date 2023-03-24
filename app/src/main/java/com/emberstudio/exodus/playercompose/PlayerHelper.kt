@@ -1,4 +1,4 @@
-package com.emberstudio.exodus.player
+package com.emberstudio.exodus.playercompose
 
 import android.content.Context
 import androidx.media3.exoplayer.ExoPlayer

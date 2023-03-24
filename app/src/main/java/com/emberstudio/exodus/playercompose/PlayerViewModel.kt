@@ -1,4 +1,4 @@
-package com.emberstudio.exodus.player
+package com.emberstudio.exodus.playercompose
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
