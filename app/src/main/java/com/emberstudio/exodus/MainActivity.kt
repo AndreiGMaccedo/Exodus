@@ -25,7 +25,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.emberstudio.exodus.navigation.NavigationDirections
 import com.emberstudio.exodus.ui.theme.ExodusTheme
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +59,6 @@ class MainActivity : ComponentActivity() {
                                 onClick = {
                                     selectedPage.value = index
                                     navController.navigate(navItem.destination)
-                                    Toast.makeText(context, navItem.label, Toast.LENGTH_SHORT).show()
                                 },
                                 label = { Text(text = stringResource(id = navItem.label)) },
                                 icon = { painterResource(id = navItem.icon) }

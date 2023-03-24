@@ -31,19 +31,20 @@ object NavigationDirections {
 
 object PlayerNavigation{
 
-    private val VIDEO_URL = "video_url"
-    val route = "${MainNavigation.PLAYER.name}/{$VIDEO_URL}"
+    const val VIDEO_URL = "video_url"
+    const val VIDEO_SELECTION = "video_selection"
+
+    val route = "${MainNavigation.PLAYER.name}/{$VIDEO_SELECTION}"
 
     val arguments = listOf(
-        navArgument(VIDEO_URL) { type = NavType.StringType }
+        navArgument(VIDEO_SELECTION) { type = NavType.IntType }
     )
 
-    fun player( videoUrl: String? = null ) =
+    fun player( selection: Int ) =
         object : NavigationCommand {
             override val arguments = this@PlayerNavigation.arguments
-            override val destination: String = "${MainNavigation.PLAYER.name}/$videoUrl"
+            override val destination: String = "${MainNavigation.PLAYER.name}/${selection}"
         }
-
 }
 
 
