@@ -18,6 +18,7 @@ import androidx.media3.ui.PlayerView
 import androidx.navigation.NavController
 import com.emberstudio.exodus.playercompose.PlayerHelper
 import com.emberstudio.exodus.playercompose.PlayerViewModel
+import com.emberstudio.exodus.utils.getMediaItem
 
 @Composable
 fun PlayerScreen(
@@ -48,14 +49,7 @@ fun PlayerScreen(
 
                     rawMediaUrl.let { rawUrl ->
                         Log.d("url", rawUrl)
-                        val mediaItem = if(rawUrl.contains("youtube")) {
-                            MediaItem.Builder()
-                                .setUri(rawUrl)
-                                .setMimeType(MimeTypes.APPLICATION_MPD)
-                                .build()
-                        } else {
-                            MediaItem.Builder().setUri(rawUrl).build()
-                        }
+                        val mediaItem = getMediaItem(rawUrl)
 
                         this.player?.setMediaItem(mediaItem)
                         this.player?.playWhenReady = true
