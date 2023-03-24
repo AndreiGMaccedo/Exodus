@@ -11,6 +11,7 @@ import com.emberstudio.exodus.home.HomeScreen
 import com.emberstudio.exodus.navigation.NavigationDirections
 import com.emberstudio.exodus.navigation.PlayerNavigation
 import com.emberstudio.exodus.playercompose.ui.PlayerScreen
+import com.emberstudio.exodus.ui.theme.ExodusTheme
 
 data class NavItem(
     @DrawableRes val icon: Int,
@@ -21,14 +22,14 @@ data class NavItem(
 val navItems = buildList {
     add(
         NavItem(
-            icon = android.R.drawable.ic_menu_compass,
+            icon = R.drawable.ic_home,
             label = R.string.home,
             NavigationDirections.home.destination
         )
     )
     add(
         NavItem(
-            icon = android.R.drawable.ic_menu_more,
+            icon = R.drawable.ic_info,
             label = R.string.about,
             NavigationDirections.about.destination
         )
@@ -37,27 +38,27 @@ val navItems = buildList {
 
 @Composable
 fun ExodusApp(navController: NavHostController) {
-
-    NavHost(
-        navController = navController,
-        startDestination = NavigationDirections.home.destination
-    ){
-        composable(NavigationDirections.home.destination){
-            HomeScreen(navController)
-        }
-        composable(NavigationDirections.about.destination){
-            AboutScreen(navController)
-        }
-        composable(
-            route = PlayerNavigation.route,
-            arguments = PlayerNavigation.arguments)
-        {
-            val selection = it.arguments?.getInt(PlayerNavigation.VIDEO_SELECTION, -1)
-            PlayerScreen(
-                navController = navController,
-                selection = selection)
+    ExodusTheme {
+        NavHost(
+            navController = navController,
+            startDestination = NavigationDirections.home.destination
+        ){
+            composable(NavigationDirections.home.destination){
+                HomeScreen(navController)
+            }
+            composable(NavigationDirections.about.destination){
+                AboutScreen(navController)
+            }
+            composable(
+                route = PlayerNavigation.route,
+                arguments = PlayerNavigation.arguments)
+            {
+                val selection = it.arguments?.getInt(PlayerNavigation.VIDEO_SELECTION, -1)
+                PlayerScreen(
+                    navController = navController,
+                    selection = selection)
+            }
         }
     }
-
 }
 

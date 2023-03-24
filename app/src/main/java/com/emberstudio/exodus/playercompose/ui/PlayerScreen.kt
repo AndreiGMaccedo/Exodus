@@ -1,14 +1,18 @@
 package com.emberstudio.exodus.playercompose.ui
 
+import android.content.res.Configuration
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.view.doOnDetach
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -30,16 +34,16 @@ fun PlayerScreen(
     val context = LocalContext.current
     val exoPlayer = PlayerHelper.getInstance(context)
 
-    val youtubeUrl = "https://www.youtube.com/api/manifest/dash/id/bf5bb2419360daf1/source/youtube?as=fmp4_audio_clear,fmp4_sd_hd_clear&sparams=ip,ipbits,expire,source,id,as&ip=0.0.0.0&ipbits=0&expire=19000000000&signature=51AF5F39AB0CEC3E5497CD9C900EBFEAECCCB5C7.8506521BFC350652163895D4C26DEE124209AA9E&key=ik0"
-
     val rawMediaUrl = viewModel.getVideoLink(selection ?: -1)
-
+    
     Column(modifier = Modifier
         .background(Color.Black)
         .fillMaxSize(),
 
         verticalArrangement = Arrangement.Center) {
-        AndroidView(factory = {
+        AndroidView(
+            modifier = Modifier.fillMaxSize(),
+            factory = {
             PlayerView(it).apply {
                 this.post {
                     this.player = exoPlayer
