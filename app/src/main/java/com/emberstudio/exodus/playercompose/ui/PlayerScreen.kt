@@ -1,6 +1,5 @@
-package com.emberstudio.exodus.player.ui
+package com.emberstudio.exodus.playercompose.ui
 
-import android.net.Uri
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,11 +14,10 @@ import androidx.core.view.doOnDetach
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MimeTypes
-import androidx.media3.extractor.ExtractorsFactory
 import androidx.media3.ui.PlayerView
 import androidx.navigation.NavController
-import com.emberstudio.exodus.player.PlayerHelper
-import com.emberstudio.exodus.player.PlayerViewModel
+import com.emberstudio.exodus.playercompose.PlayerHelper
+import com.emberstudio.exodus.playercompose.PlayerViewModel
 
 @Composable
 fun PlayerScreen(
