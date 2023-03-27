@@ -28,12 +28,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.media3.common.util.UnstableApi
 import androidx.navigation.NavController
 import com.emberstudio.exodus.navigation.NavigationDirections
 import com.emberstudio.exodus.navigation.PlayerNavigation
 import com.emberstudio.exodus.playertraditional.PlayerActivity
 
 @Composable
+@UnstableApi
 fun HomeScreen(navController: NavController){
 
     var selectedVideo by remember{ mutableStateOf(0) }

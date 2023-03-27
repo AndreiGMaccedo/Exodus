@@ -1,9 +1,14 @@
 package com.emberstudio.exodus.playertraditional
 
+import android.content.pm.ActivityInfo
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import androidx.activity.viewModels
-import androidx.media3.common.MimeTypes
+import androidx.core.view.WindowCompat
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.emberstudio.exodus.R
@@ -26,6 +31,7 @@ import com.emberstudio.exodus.utils.getMediaItem
         super.onCreate(savedInstanceState)
         binding = ActivityPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        prepareSystemUI()
 
         val selection = intent.extras?.getInt(PlayerNavigation.VIDEO_SELECTION, -1) ?: -1
         rawUrl = viewModel.getVideoLink(selection)
@@ -41,6 +47,26 @@ import com.emberstudio.exodus.utils.getMediaItem
     override fun onDestroy() {
         super.onDestroy()
         exoPlayer.release()
+    }
+
+    fun prepareSystemUI() {
+        //Hides the ugly action bar at the top
+        supportActionBar?.hide()
+
+        //Hide the status bars
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        } else {
+            window.insetsController?.apply {
+                hide(WindowInsets.Type.statusBars())
+                hide(WindowInsets.Type.navigationBars())
+                systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        }
+
     }
 
     private fun initializePlayer(){
