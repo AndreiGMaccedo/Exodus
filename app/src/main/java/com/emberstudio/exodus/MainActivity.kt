@@ -120,7 +120,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 }
-            ) { paddingValues ->
+            ) {
                 ExodusApp(navController)
             }
         }

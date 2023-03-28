@@ -3,6 +3,7 @@ package com.emberstudio.exodus
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
+import androidx.media3.common.util.UnstableApi
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -37,6 +38,7 @@ val navItems = buildList {
 }
 
 @Composable
+@UnstableApi
 fun ExodusApp(navController: NavHostController) {
     ExodusTheme {
         NavHost(
