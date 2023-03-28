@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavController){
     var selectedVideo by remember{ mutableStateOf(0) }
     var showDialog by remember { mutableStateOf(false) }
 
-    var context = LocalContext.current
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier.fillMaxSize(),
