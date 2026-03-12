@@ -13,4 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Exodus"
-include ':app'
+include(":app")
+include(":exodustv")
