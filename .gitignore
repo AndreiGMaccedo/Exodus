@@ -7,6 +7,8 @@
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
+/.idea/vcs.xml
+/.idea/gradle.xml
 /.idea/navEditor.xml
 /.idea/compiler.xml
 /.idea/misc.xml
