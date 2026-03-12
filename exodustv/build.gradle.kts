@@ -1,19 +1,25 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.emberstudio.exodustv"
-    compileSdk = 36
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.emberstudio.exodustv"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
+    }
 
+    buildFeatures {
+        compose = true
     }
 
     buildTypes {
@@ -39,10 +45,18 @@ dependencies {
 
     // General compose dependencies.
     implementation(libs.androidx.activity.compose)
-
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.compose)
     debugImplementation(libs.androidx.ui.tooling)
 
+    // HILT
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
     // Compose for TV dependencies.
-    implementation("androidx.tv:tv-material:1.0.1")
+    implementation(libs.androidx.tv.foundation)
+    implementation(libs.androidx.tv.material)
 }

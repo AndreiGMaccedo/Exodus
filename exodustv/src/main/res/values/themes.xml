@@ -1,4 +1,3 @@
 <resources>
-
-    <style name="Theme.Exodus" parent="@style/Theme.Leanback" />
+    <style name="Theme.Exodus" parent="android:Theme.Material.NoActionBar.Fullscreen" />
 </resources>
